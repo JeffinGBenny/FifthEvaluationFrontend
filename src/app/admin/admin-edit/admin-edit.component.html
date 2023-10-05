@@ -1,0 +1,60 @@
+<p>admin-edit works!</p>
+<div class="container">
+    <h3>Update Loan request</h3>
+    <br>
+    <!--Template Driven form-->
+    <form name="frmCustomer" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+        <div class="form-group">
+            <input type="hidden" readonly name="loanId" [(ngModel)]="customerService.formCustomerData.loanId" />
+        </div>
+        <div class="form-group">
+            <label for="loanAmount">Loan amount</label>
+            <input type="text" name="loanAmount" #loanAmount="ngModel"
+                [(ngModel)]="customerService.formCustomerData.loanAmount" class="form-control"
+                placeholder="Enter loanAmount"  maxlength="25" required
+                [ngClass]="{'is-inavlid': loanAmount.touched && loanAmount.inavlid}" />
+            <div class="validation-error" *ngIf="loanAmount.touched && loanAmount.inavlid">
+                <div *ngIf="loanAmount.errors.required">
+                    loanAmount should be valid and loanAmount is required
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="form-group">
+            <label for="customer_id">customer Id</label>
+            <input type="text" name="customer_id" #customer_id="ngModel"
+                [(ngModel)]="customerService.formCustomerData.customer_id" class="form-control"
+                placeholder="Enter customer_id"  maxlength="25" required
+                [ngClass]="{'is-inavlid': customer_id.touched && customer_id.inavlid}" />
+            <div class="validation-error" *ngIf="loanAmount.touched && loanAmount.inavlid">
+                <div *ngIf="customer_id.errors.required">
+                    customer_id should be valid and customer_id is required
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="loanOfficer_Id">LoanOfficer Id</label>
+            <input type="text" name="loanOfficer_Id" #customer_id="ngModel"
+                [(ngModel)]="customerService.formCustomerData.loanOfficer_Id" class="form-control"
+                placeholder="Enter loanOfficer_Id"  maxlength="25" required
+                [ngClass]="{'is-inavlid': loanOfficer_Id.touched && loanOfficer_Id.inavlid}" />
+            <div class="validation-error" *ngIf="loanOfficer_Id.touched && loanOfficer_Id.inavlid">
+                <div *ngIf="loanOfficer_Id.errors.required">
+                    customer_id should be valid and customer_id is required
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary form-control" [disabled]="!(form.valid && form.dirty)">
+                UPDATE </button>
+        </div>
+
+    </form>
+</div>
+
